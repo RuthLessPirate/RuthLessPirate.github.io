@@ -1,1 +1,47 @@
-"Hello World"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Primes</title>
+</head>
+<body>
+    <script language="javascript" type="text/javascript">
+function isPrime(num) {
+    if (num <= 1) {
+        return false;
+    }
+
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function findNextPrime(currentPrime) {
+    let nextNumber = currentPrime + 1;
+    while (true) {
+        if (isPrime(nextNumber)) {
+            return nextNumber;
+        }
+        nextNumber++;
+    }
+}
+
+let currentPrime = 1;
+
+function findAndDisplayNextPrime() {
+    currentPrime = findNextPrime(currentPrime);
+    console.log("Next prime number: " + currentPrime);
+	document.write(currentPrime);
+	document.write("<br/>");
+	window.scrollTo(0, document.body.scrollHeight);
+}
+
+// Continually find and display larger prime numbers
+setInterval(findAndDisplayNextPrime, 1); // Change the interval as needed (in milliseconds)
+</script>
+</body>
+</html>
